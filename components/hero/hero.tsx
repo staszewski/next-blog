@@ -6,27 +6,15 @@ import React, {
 } from "react"
 import { Carousel } from "react-responsive-carousel"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
-import Container from "../container" // requires a loader
+import Container from "../container"
 
-const arrowStyles: CSSProperties = {
-  position: "absolute",
-  zIndex: 2,
-  top: "calc(50% - 15px)",
-  width: 30,
-  height: 30,
-  cursor: "pointer",
+interface Properties {
+  featuredPosts: any[]
 }
 
-const indicatorStyles: CSSProperties = {
-  background: "#fff",
-  width: 8,
-  height: 8,
-  display: "inline-block",
-  margin: "0 8px",
-}
-
-const Hero: FunctionComponent<{}> = () => {
+const Hero: FunctionComponent<Properties> = ({ featuredPosts }) => {
   const [generatedClass, setGeneratedClass] = useState("")
+  const [activeIndex, setActiveIndex] = useState(0)
   const applyClass = () => {
     const getRandomInt = () => {
       const min = Math.ceil(1)
@@ -35,58 +23,36 @@ const Hero: FunctionComponent<{}> = () => {
     }
     return setGeneratedClass(`bg-indigo-${getRandomInt()}00`)
   }
+  useEffect(() => applyClass(), [])
   return (
-    <section
-      className={`flex phone:flex-col tablet:flex-row min-h-screen ${generatedClass}`}
-    >
+    <section className={`min-h-screen ${generatedClass}`}>
       <Container>
-        <Carousel
-          className="tablet:max-w-3xl"
-          renderArrowPrev={(onClickHandler, hasPrev, label) => {
-            const onClick = () => {
-              onClickHandler()
-              applyClass()
-            }
-            return (
-              hasPrev && (
-                <button
-                  type="button"
-                  onClick={onClick}
-                  title={label}
-                  style={{ ...arrowStyles, left: 15 }}
-                >
-                  -
-                </button>
-              )
-            )
-          }}
-          renderArrowNext={(onClickHandler, hasNext, label) => {
-            const onClick = () => {
-              onClickHandler()
-              applyClass()
-            }
-            return (
-              hasNext && (
-                <button
-                  type="button"
-                  onClick={onClick}
-                  title={label}
-                  style={{ ...arrowStyles, right: 15 }}
-                >
-                  +
-                </button>
-              )
-            )
-          }}
-        >
-          <div>
-            <img src="/assets/blog/focus.svg" />
+        <div className="min-h-screen flex phone:flex-col phone:items-center phone:pt-16 tablet:flex-row">
+          <div className="flex items-center tablet:w-1/2 h-56">
+            <h1 className="text-2xl">{featuredPosts[activeIndex].excerpt}</h1>
           </div>
-          <div>
-            <img src="/assets/blog/cat.svg" />
-          </div>
-        </Carousel>
-        <h1 className="text-2xl">some text</h1>
+          <Carousel
+            autoPlay
+            infiniteLoop
+            showIndicators={false}
+            showStatus={false}
+            showThumbs={false}
+            showArrows={false}
+            onSwipeEnd={applyClass}
+            onChange={(index) => {
+              setActiveIndex(index)
+              applyClass()
+            }}
+          >
+            {featuredPosts.map((post) => {
+              return (
+                <div className="pt-16" key={post.date}>
+                  <img src={post.coverImage} />
+                </div>
+              )
+            })}
+          </Carousel>
+        </div>
       </Container>
     </section>
   )
