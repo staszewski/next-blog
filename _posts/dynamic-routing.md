@@ -1,7 +1,7 @@
 ---
 title: 'Dynamic Routing and Static Generation'
 excerpt: 'Excerpt 1'
-coverImage: '/assets/blog/dynamic-routing/cover.jpg'
+coverImage: '/assets/blog/cat.svg'
 date: '2020-03-16T05:35:07.322Z'
 author:
   name: JJ Kasper

@@ -28,7 +28,7 @@ const Hero: FunctionComponent<Properties> = ({ featuredPosts }) => {
     <section className={`min-h-screen ${generatedClass}`}>
       <Container>
         <div className="min-h-screen flex phone:flex-col phone:items-center phone:pt-16 tablet:flex-row">
-          <div className="flex items-center tablet:w-1/2 h-56">
+          <div className="flex items-center tablet:w-1/2 h-64">
             <h1 className="text-2xl">{featuredPosts[activeIndex].excerpt}</h1>
           </div>
           <Carousel
@@ -46,7 +46,7 @@ const Hero: FunctionComponent<Properties> = ({ featuredPosts }) => {
           >
             {featuredPosts.map((post) => {
               return (
-                <div className="pt-16" key={post.date}>
+                <div className="pt-20" key={post.date}>
                   <img src={post.coverImage} />
                 </div>
               )

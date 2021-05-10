@@ -1,7 +1,7 @@
 ---
 title: 'Learn How to Pre-render Pages Using Static Generation with Next.js'
 excerpt: 'san sit amet nulla facilities morbi tempus.'
-coverImage: '/assets/blog/hello-world/cover.jpg'
+coverImage: '/assets/blog/focus.svg'
 date: '2020-03-16T05:35:07.322Z'
 author:
   name: Tim Neutkens
