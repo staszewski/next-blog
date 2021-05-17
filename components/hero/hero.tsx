@@ -52,7 +52,6 @@ const Hero: FunctionComponent<Properties> = ({ featuredPosts }) => {
             selectedItem={activeIndex}
             onSwipeEnd={applyClass}
             onChange={(index) => {
-              console.log("change")
               setActiveIndex(index)
               applyClass()
             }}
@@ -68,9 +67,9 @@ const Hero: FunctionComponent<Properties> = ({ featuredPosts }) => {
           <div className="flex items-center flex-initial min-w-1/2 phone:h-96">
             <h1 className="text-2xl">{featuredPosts[activeIndex].excerpt}</h1>
           </div>
-          <div className="flex phone:items-start">
-            <button onClick={prev}>Prev</button>
-            <button onClick={next}>Next</button>
+          <div className="flex phone:items-start tablet:flex-col tablet:pr-8">
+            <button className="phone:p-4 phone:pl-0 tablet:p-0" onClick={next} aria-label="Next story">Next</button>
+            <button className="phone:p-4 tablet:p-0" onClick={prev} aria-label="Previous story">Prev</button>
           </div>
         </div>
       </Container>
