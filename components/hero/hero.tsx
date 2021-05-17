@@ -24,6 +24,20 @@ const Hero: FunctionComponent<Properties> = ({ featuredPosts }) => {
     return setGeneratedClass(`bg-indigo-${getRandomInt()}00`)
   }
   useEffect(() => applyClass(), [])
+  const next = () => {
+    if (activeIndex === featuredPosts.length - 1) {
+      setActiveIndex(0)
+    } else {
+      setActiveIndex(prevItem => prevItem + 1)
+    }
+  }
+  const prev = () => {
+    if (activeIndex === 0) {
+      setActiveIndex(featuredPosts.length - 1)
+    } else {
+      setActiveIndex(prevItem => prevItem - 1)
+    }
+  }
   return (
     <section className={`min-h-screen ${generatedClass}`}>
       <Container>
@@ -35,8 +49,10 @@ const Hero: FunctionComponent<Properties> = ({ featuredPosts }) => {
             showStatus={false}
             showThumbs={false}
             showArrows={false}
+            selectedItem={activeIndex}
             onSwipeEnd={applyClass}
             onChange={(index) => {
+              console.log("change")
               setActiveIndex(index)
               applyClass()
             }}
@@ -49,10 +65,13 @@ const Hero: FunctionComponent<Properties> = ({ featuredPosts }) => {
               )
             })}
           </Carousel>
-          <div className="flex items-center flex-initial min-w-1/2">
+          <div className="flex items-center flex-initial min-w-1/2 phone:h-96">
             <h1 className="text-2xl">{featuredPosts[activeIndex].excerpt}</h1>
           </div>
-
+          <div className="flex phone:items-start">
+            <button onClick={prev}>Prev</button>
+            <button onClick={next}>Next</button>
+          </div>
         </div>
       </Container>
     </section>
