@@ -27,10 +27,7 @@ const Hero: FunctionComponent<Properties> = ({ featuredPosts }) => {
   return (
     <section className={`min-h-screen ${generatedClass}`}>
       <Container>
-        <div className="min-h-screen flex phone:flex-col phone:items-center phone:pt-16 tablet:flex-row">
-          <div className="flex items-center tablet:w-1/2 h-64">
-            <h1 className="text-2xl">{featuredPosts[activeIndex].excerpt}</h1>
-          </div>
+        <div className="min-h-screen flex phone:flex-col phone:pt-16 tablet:flex-row-reverse tablet:items-center">
           <Carousel
             autoPlay
             infiniteLoop
@@ -52,6 +49,10 @@ const Hero: FunctionComponent<Properties> = ({ featuredPosts }) => {
               )
             })}
           </Carousel>
+          <div className="flex items-center flex-initial min-w-1/2">
+            <h1 className="text-2xl">{featuredPosts[activeIndex].excerpt}</h1>
+          </div>
+
         </div>
       </Container>
     </section>
