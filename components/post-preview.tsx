@@ -23,11 +23,11 @@ const PostPreview = ({
   slug,
 }: Props) => {
   return (
-    <div className="preview relative">
-      <Blob />
-      <div className="mb-5 relative z-10">
+    <div className="relative">
+      <div className="mb-5 relative z-10 preview">
         <CoverImage slug={slug} title={title} src={coverImage} />
       </div>
+      <Blob />
       <h3 className="text-3xl mb-3 leading-snug relative z-10">
         <Link as={`/posts/${slug}`} href="/posts/[slug]">
           <a className="hover:underline">{title}</a>

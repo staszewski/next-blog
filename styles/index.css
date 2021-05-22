@@ -13,10 +13,10 @@
 /* Stop purging. */
 
 /* Your own custom utilities */
-.preview > svg {
+.preview ~ svg {
   transform: scale(0);
   transition: all 0.3s ease-out;
 }
-.preview:hover > svg {
+.preview:hover ~ svg {
   transform: scale(2.2);
 }
