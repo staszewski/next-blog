@@ -1,7 +1,5 @@
-import React, {FunctionComponent} from "react"
+import React, { FunctionComponent } from "react"
 
-const BlobComponent: FunctionComponent<{}> = () => (
+const BlobComponent: FunctionComponent<{}> = () => <div>asdsada</div>
 
-)
-
-export default BlobComponent;
+export default BlobComponent
